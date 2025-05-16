@@ -20,43 +20,7 @@ export class AuthService {
     private readonly jwtService: JwtService
   ) {}
 
-  async generateTokens(user: AdminDocument) {
-    const payload = {
-      id: user.id,
-      is_active: user.is_active,
-      // is_owner: user.is_owner,
-    };
-
-    const [accessToken, refreshToken] = await Promise.all([
-      this.jwtService.signAsync(payload, {
-        secret: process.env.ACCESS_TOKEN_KEY,
-        expiresIn: process.env.ACCESS_TOKEN_TIME,
-      }),
-
-      this.jwtService.signAsync(payload, {
-        secret: process.env.REFRESH_TOKEN_KEY,
-        expiresIn: process.env.REFRESH_TOKEN_TIME,
-      }),
-    ]);
-
-    return {
-      accessToken,
-      refreshToken,
-    };
-  }
-
-  async signUp(createAdminDto: CreateAdminDto) {
-    const condidate = await this.usersService.findUserByEmail(
-      createAdminDto.email
-    );
-
-    if (condidate) {
-      throw new ConflictException("Bunday email mavjud");
-    }
-
-    const newUser = await this.usersService.create(createAdminDto);
-    return { messsage: "Foydalanuvchi qo'shildi", userId: newUser.id };
-  }
+  
 
   async signIn(signInDto: SignInDto, res: Response) {
     const user = await this.usersService.findUserByEmail(signInDto.email);
@@ -78,7 +42,7 @@ export class AuthService {
       throw new BadRequestException("email yoki password notogri");
     }
   
-    const { accessToken, refreshToken } = await this.generateTokens(user);
+    const { accessToken, refreshToken } = await this.usersService.generateTokens(user);
 
     res.cookie("refresh_token", refreshToken, {
       httpOnly: true,

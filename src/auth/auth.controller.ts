@@ -5,21 +5,23 @@ import { SignInDto } from './dto/sign-in.dto';
 import { Response } from 'express';
 import { CreateAdminDto } from '../admin/dto/create-admin.dto';
 
-@Controller('auth')
+@Controller("auth")
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post("sign-up")
-  async signUp(@Body() createUserDto:CreateAdminDto){
-    return this.authService.signUp(createUserDto)
-  }
-
   @Post("sign-in")
   async signIn(
-    @Body() signInDto:SignInDto ,
-    @Res({passthrough:true}) res:Response
-  ){
-    return this.authService.signIn(signInDto, res)
+    @Body() signInDto: SignInDto,
+    @Res({ passthrough: true }) res: Response
+  ) {
+    return this.authService.signIn(signInDto, res);
   }
-  
+
+  @Post("sign-out")
+  async signOut(
+    refresh_token: string,
+    @Res({ passthrough: true }) res: Response
+  ) {
+    return this.authService.signOut(refresh_token, res);
+  }
 }

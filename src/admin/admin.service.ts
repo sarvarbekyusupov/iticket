@@ -28,7 +28,12 @@ export class AdminService {
 
     const hashed_password = await bcrypt.hash(password, 7);
 
-    return this.adminSchema.create({ ...createAdminDto, hashed_password });
+    return this.adminSchema.create({
+      ...createAdminDto,
+      hashed_password,
+      messsage: "Foydalanuvchi qo'shildi",
+    });
+
   }
 
   findAll() {
