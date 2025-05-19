@@ -13,6 +13,12 @@ import { TypesModule } from './types/types.module';
 import { VenuPhotoModule } from './venu-photo/venu-photo.module';
 import { SeatTypeModule } from './seat-type/seat-type.module';
 import { SeatModule } from './seat/seat.module';
+import { EventModule } from './event/event.module';
+import { TicketModule } from './ticket/ticket.module';
+import { TicketStatusModule } from './ticket_status/ticket_status.module';
+import { EventTypeModule } from './event_type/event_type.module';
+import { HumanCategoryModule } from './human_category/human_category.module';
+import { LangModule } from './lang/lang.module';
 
 
 @Module({
@@ -31,6 +37,12 @@ import { SeatModule } from './seat/seat.module';
     VenuPhotoModule,
     SeatTypeModule,
     SeatModule,
+    EventModule,
+    TicketModule,
+    TicketStatusModule,
+    EventTypeModule,
+    HumanCategoryModule,
+    LangModule,
   ],
   controllers: [],
   providers: [],
