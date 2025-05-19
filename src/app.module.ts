@@ -7,6 +7,12 @@ import { DistrictModule } from './district/district.module';
 import { CustomerModule } from './customer/customer.module';
 import { CustomerAddressModule } from './customer-address/customer-address.module';
 import { CustomerCardModule } from './customer-card/customer-card.module';
+import { VenueModule } from './venue/venue.module';
+import { VenueTypesModule } from './venue-types/venue-types.module';
+import { TypesModule } from './types/types.module';
+import { VenuPhotoModule } from './venu-photo/venu-photo.module';
+import { SeatTypeModule } from './seat-type/seat-type.module';
+import { SeatModule } from './seat/seat.module';
 
 
 @Module({
@@ -19,6 +25,12 @@ import { CustomerCardModule } from './customer-card/customer-card.module';
     CustomerModule,
     CustomerAddressModule,
     CustomerCardModule,
+    VenueModule,
+    VenueTypesModule,
+    TypesModule,
+    VenuPhotoModule,
+    SeatTypeModule,
+    SeatModule,
   ],
   controllers: [],
   providers: [],
